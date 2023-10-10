@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <title>Movie Booking - {{ movie['title'] }}</title>
+   </head>
+   <body>
+      <h1>Book Tickets for {{ movie['title'] }}</h1>
+      <img src="{{ url_for('static', filename=movie['image_path']) }}" alt="{{ movie['title'] }} Image">
+      <p>Available Seats: {{ movie['seats'] }}</p>
+      <form method="POST">
+         <label for="num_seats">Number of Seats:</label>
+         <input type="number" id="num_seats" name="num_seats" min="1" max="{{ movie['seats'] }}" required>
+         <button type="submit">Book</button>
+      </form>
+      <br><br>
+      <a href="{{ url_for('index') }}">Back to Movies</a>
+   </body>
+</html>
